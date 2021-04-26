@@ -1,0 +1,156 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Dobby" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="bottomSheetDialogTheme">@style/InputBottomSheetDialogStyle</item>
+        <item name="imageButtonStyle">@style/ImageButtonStyle</item>
+        <item name="android:windowBackground">@color/bluish_white</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="BottomSheetDialogStyle" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetDialog</item>
+    </style>
+
+    <style name="ImageButtonStyle" parent="Widget.AppCompat.ImageButton">
+        <item name="android:tint">@color/neo_black</item>
+    </style>
+
+    <style name="InputBottomSheetDialogStyle" parent="BottomSheetDialogStyle">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary</item>
+    </style>
+
+    <style name="BottomSheetDialog" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="shapeAppearanceOverlay">@style/BottomSheetShapeAppearance</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheetShapeAppearance" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">10dp</item>
+        <item name="cornerSizeTopRight">10dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+
+    <style name="BottomNavigationStyle" parent="Widget.Design.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_navigation_view_selected_state</item>
+        <item name="itemTextColor">@color/bottom_navigation_view_selected_state</item>
+        <item name="backgroundTint">@color/white</item>
+    </style>
+
+
+    <style name="Bold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/open_sans_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/neo_black</item>
+        <item name="drawableTint">@color/neo_black</item>
+    </style>
+
+    <style name="Light" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/open_sans_light</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/neo_black</item>
+        <item name="drawableTint">@color/neo_black</item>
+    </style>
+
+    <style name="Regular" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/open_sans_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/neo_black</item>
+        <item name="drawableTint">@color/neo_black</item>
+    </style>
+
+
+    <style name="SemiBold" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/fira_sans_medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/neo_black</item>
+        <item name="drawableTint">@color/neo_black</item>
+    </style>
+
+    <style name="Medium" parent="Widget.MaterialComponents.TextView">
+        <item name="android:fontFamily">@font/open_sans_semibold</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/neo_black</item>
+        <item name="drawableTint">@color/neo_black</item>
+    </style>
+
+    <style name="CorneredButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="elevation">0dp</item>
+        <item name="android:background">@drawable/drawable_outline_button</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="backgroundTint">@null</item>
+    </style>
+
+
+    <style name="RoundButton" parent="Widget.MaterialComponents.Button">
+        <item name="elevation">0dp</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
+
+
+    <style name="CorneredImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">@drawable/drawable_outline_button</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_marginStart">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+    </style>
+
+    <style name="TabLayoutStyle" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabTextColor">@color/grey</item>
+        <item name="tabSelectedTextColor">@color/colorPrimary</item>
+        <item name="tabIndicatorColor">@color/colorPrimary</item>
+        <item name="tabIndicator">@drawable/drawable_tab_layout_round_corner</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="">
+        <item name="android:background">@drawable/drawable_bottom_sheet</item>
+    </style>
+
+    <style name="TabTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/fira_sans_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="DialogEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="hintTextAppearance">@style/TabTextAppearance</item>
+        <item name="android:textAppearance">@style/TabTextAppearance</item>
+    </style>
+
+    <style name="SplashScreenTheme" parent = "Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@drawable/drawable_splash</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="FormEditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/grey</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+    </style>
+
+</resources>
