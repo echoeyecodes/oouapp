@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "6c09c5618cb7e58817da17233b0cc67f",
+    "identityHash": "6ee812cf567c95af84cc4ab8066944cd",
     "entities": [
       {
         "tableName": "courses",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` TEXT NOT NULL, `semester` TEXT NOT NULL, `session` TEXT NOT NULL, `units` TEXT NOT NULL, `score` TEXT NOT NULL, PRIMARY KEY(`code`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`code` TEXT NOT NULL, `semester` TEXT NOT NULL, `session` TEXT NOT NULL, `units` TEXT NOT NULL, `score` TEXT NOT NULL, `grade` TEXT NOT NULL, PRIMARY KEY(`code`))",
         "fields": [
           {
             "fieldPath": "code",
@@ -37,6 +37,12 @@
             "columnName": "score",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "grade",
+            "columnName": "grade",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -50,7 +56,7 @@
       },
       {
         "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `matricNo` TEXT NOT NULL, `course` TEXT NOT NULL, `level` TEXT NOT NULL, `gender` TEXT NOT NULL, `jambScore` TEXT NOT NULL, PRIMARY KEY(`matricNo`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `matricNo` TEXT NOT NULL, `course` TEXT NOT NULL, `level` TEXT NOT NULL, `gender` TEXT NOT NULL, `jambScore` TEXT NOT NULL, `timestamp` TEXT NOT NULL, PRIMARY KEY(`matricNo`))",
         "fields": [
           {
             "fieldPath": "name",
@@ -87,6 +93,12 @@
             "columnName": "jambScore",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -102,7 +114,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6c09c5618cb7e58817da17233b0cc67f')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6ee812cf567c95af84cc4ab8066944cd')"
     ]
   }
 }

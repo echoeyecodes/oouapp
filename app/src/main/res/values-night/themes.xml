@@ -12,17 +12,14 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogStyle</item>
+        <item name="bottomSheetDialogTheme">@style/InputBottomSheetDialogStyle</item>
         <item name="imageButtonStyle">@style/ImageButtonStyle</item>
+        <item name="android:windowBackground">@color/neo_black</item>
         <!-- Customize your theme here. -->
     </style>
 
     <style name="BottomSheetDialogStyle" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetDialog</item>
-    </style>
-
-    <style name="CustomBottomSheet" parent="">
-        <item name="android:background">@drawable/drawable_bottom_sheet_dark</item>
     </style>
 
     <style name="ImageButtonStyle" parent="Widget.AppCompat.ImageButton">
@@ -55,15 +52,15 @@
 
 
     <style name="BottomNavigationStyle" parent="Widget.Design.BottomNavigationView">
-        <item name="itemIconTint">@color/bottom_navigation_view_selected_state_dark</item>
-        <item name="itemTextColor">@color/bottom_navigation_view_selected_state_dark</item>
+        <item name="itemIconTint">@color/bottom_navigation_view_selected_state</item>
+        <item name="itemTextColor">@color/bottom_navigation_view_selected_state</item>
         <item name="backgroundTint">@color/white</item>
     </style>
 
 
     <style name="Bold" parent="Widget.MaterialComponents.TextView">
         <item name="android:fontFamily">@font/open_sans_bold</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="drawableTint">@color/white</item>
     </style>
@@ -100,7 +97,7 @@
     <style name="CorneredButtonStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="elevation">0dp</item>
         <item name="android:background">@drawable/drawable_outline_button</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/white</item>
         <item name="backgroundTint">@null</item>
     </style>
 
@@ -126,6 +123,16 @@
         <item name="tabIndicator">@drawable/drawable_tab_layout_round_corner</item>
     </style>
 
+    <style name="CustomBottomSheet" parent="">
+        <item name="android:background">@drawable/drawable_bottom_sheet_dark</item>
+    </style>
+
+    <style name="TabTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/fira_sans_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
     <style name="DialogEditText" parent="Widget.AppCompat.EditText">
         <item name="android:background">@null</item>
         <item name="android:textColorHint">@color/grey</item>
@@ -138,6 +145,32 @@
         <item name="android:windowBackground">@drawable/drawable_splash</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="FormEditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/grey</item>
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+    </style>
+
+    <style name="CustomAlertDialog" parent="Theme.MaterialComponents.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary</item>
+        <item name="colorOnSecondary">@color/white</item>
+    </style>
+
+    <style name="AlertDialogStyle" parent="">
+        <item name="android:background">@drawable/drawable_alert_dialog_dark</item>
+    </style>
+
+    <style name="CustomCardViewStyle" parent="Base.CardView">
+        <item name="cardBackgroundColor">@color/card_background_color</item>
     </style>
 
 </resources>

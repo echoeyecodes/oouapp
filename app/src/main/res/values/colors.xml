@@ -20,11 +20,21 @@
 
     <color name="inputStroke">#e9e9e9</color>
     <color name="sunshine_yellow">#e4bc3f</color>
-    <color name="colorPrimary">#de5246</color>
+    <color name="colorPrimary">#899cfc</color>
     <color name="google_blue">#4285F4</color>
     <color name="google_green">#0F9D58</color>
     <color name="ash">#e4e4e4</color>
     <color name="colorPrimaryLight">#80de5246</color>
     <color name="red">#ff0000</color>
     <color name="bluish_white">#f0f8fe</color>
+
+
+    <color name="grade_a">#0F9D58</color>
+    <color name="grade_b">#4285F4</color>
+    <color name="grade_c">#ff781f</color>
+    <color name="grade_d">#842bd7</color>
+    <color name="grade_e">#6f7ead</color>
+    <color name="grade_f">#de5246</color>
+
+    <color name="card_background_color">#25282b</color>
 </resources>

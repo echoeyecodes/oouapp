@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Dobby</string>
+    <string name="app_name">Scrub</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque elementum velit ut velit suscipit tristique. Sed a porttitor ipsum. Ut vitae viverra lorem.</string>
     <string name="post_image">post_image</string>
-    <string name="ad_id">ca-app-pub-5590121921077996/1975586523</string>
 </resources>

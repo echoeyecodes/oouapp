@@ -30,7 +30,18 @@
             android:drawablePadding="5dp"
             app:drawableTint="@color/sunshine_yellow" />
 
-        <com.echoeyecodes.ign.customviews.CustomEditText
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Badger fetches your student information from the school's website and displays it here for analysis and everything nice!"
+            style="@style/Light"
+            android:layout_marginVertical="20dp"
+            android:gravity="center"
+             />
+
+
+        <com.echoeyecodes.scrub.customviews.CustomEditText
             android:id="@+id/matric_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +51,7 @@
             app:inputType="0"
             />
 
-        <com.echoeyecodes.ign.customviews.CustomEditText
+        <com.echoeyecodes.scrub.customviews.CustomEditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

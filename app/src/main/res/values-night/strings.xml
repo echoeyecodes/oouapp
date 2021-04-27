@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Dobby</string>
+    <string name="app_name">Scrub</string>
     <string name="post_image">post_image</string>
-    <string name="ad_id">ca-app-pub-5590121921077996/1975586523</string>
 </resources>

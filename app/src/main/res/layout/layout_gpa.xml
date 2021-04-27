@@ -26,11 +26,12 @@
         app:drawableStartCompat="@drawable/ic_bolt" />
 
     <TextView
+        android:id="@+id/timestamp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/Light"
         android:textColor="@color/white"
-        android:text="Maximum Possible GPA: 5.00"
+        android:text="Last updated: N/A"
         />
 
 </LinearLayout>

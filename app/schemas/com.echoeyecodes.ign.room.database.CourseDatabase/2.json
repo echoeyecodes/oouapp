@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "da388df5bec61a40145c89c2b3f373db",
+    "identityHash": "6ee812cf567c95af84cc4ab8066944cd",
     "entities": [
       {
         "tableName": "courses",
@@ -56,7 +56,7 @@
       },
       {
         "tableName": "users",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `matricNo` TEXT NOT NULL, `course` TEXT NOT NULL, `level` TEXT NOT NULL, `gender` TEXT NOT NULL, `jambScore` TEXT NOT NULL, PRIMARY KEY(`matricNo`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`name` TEXT NOT NULL, `matricNo` TEXT NOT NULL, `course` TEXT NOT NULL, `level` TEXT NOT NULL, `gender` TEXT NOT NULL, `jambScore` TEXT NOT NULL, `timestamp` TEXT NOT NULL, PRIMARY KEY(`matricNo`))",
         "fields": [
           {
             "fieldPath": "name",
@@ -93,6 +93,12 @@
             "columnName": "jambScore",
             "affinity": "TEXT",
             "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "TEXT",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -108,7 +114,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'da388df5bec61a40145c89c2b3f373db')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6ee812cf567c95af84cc4ab8066944cd')"
     ]
   }
 }
