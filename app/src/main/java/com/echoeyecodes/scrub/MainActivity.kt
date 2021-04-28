@@ -127,13 +127,7 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
     }
 
     private fun logOut(){
-        val sharedPref = getSharedPreferences("auth", MODE_PRIVATE)
-        sharedPref.edit().apply {
-            remove("token")
-            apply()
-            startActivity(Intent(this@MainActivity, SignUpActivity::class.java))
-            finish()
-        }
+        viewModel.logOut(this)
     }
 
     override fun onResume() {

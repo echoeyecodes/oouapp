@@ -1,8 +1,13 @@
 package com.echoeyecodes.scrub.viewmodels
 
+import android.app.Activity
 import android.app.Application
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.Intent
 import androidx.lifecycle.*
 import com.echoeyecodes.dobby.utils.getGradeValue
+import com.echoeyecodes.scrub.activities.SignUpActivity
 import com.echoeyecodes.scrub.api.constants.ApiState
 import com.echoeyecodes.scrub.models.CourseModel
 import com.echoeyecodes.scrub.models.Filter
@@ -10,6 +15,7 @@ import com.echoeyecodes.scrub.models.FilterModel
 import com.echoeyecodes.scrub.models.UserModel
 import com.echoeyecodes.scrub.repositories.CourseRepository
 import com.echoeyecodes.scrub.utils.AndroidUtilities
+import kotlinx.coroutines.runBlocking
 
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
     val courses : LiveData<List<CourseModel>>
@@ -99,5 +105,18 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
     fun getNetworkState():LiveData<ApiState<Any>>{
         return courseRepository.state
+    }
+
+    fun logOut(activity: Activity){
+        runBlocking {
+            courseRepository.deleteData()
+            val sharedPref = activity.getSharedPreferences("auth", MODE_PRIVATE)
+            sharedPref.edit().apply {
+                remove("token")
+                apply()
+                activity.startActivity(Intent(activity, SignUpActivity::class.java))
+                activity.finish()
+            }
+        }
     }
 }

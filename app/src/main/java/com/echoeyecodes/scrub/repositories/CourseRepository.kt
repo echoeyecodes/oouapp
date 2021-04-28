@@ -58,4 +58,9 @@ class CourseRepository(val context:Context) {
         return userDao.getUserLiveData()
     }
 
+    suspend fun deleteData(){
+        courseDao.deleteCourses()
+        userDao.deleteUsers()
+    }
+
 }
