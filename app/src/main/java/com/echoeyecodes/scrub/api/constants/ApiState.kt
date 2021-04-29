@@ -7,6 +7,5 @@ sealed class ApiState<out T : Any>{
 
     object Loading : ApiState<Nothing>()
     object Unauthorized : ApiState<Nothing>()
-    object Complete : ApiState<Nothing>()
-
+    data class Complete<T:Any>(val data:T?) : ApiState<T>()
 }

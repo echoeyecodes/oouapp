@@ -9,6 +9,7 @@ import androidx.lifecycle.*
 import com.echoeyecodes.dobby.utils.getGradeValue
 import com.echoeyecodes.scrub.activities.SignUpActivity
 import com.echoeyecodes.scrub.api.constants.ApiState
+import com.echoeyecodes.scrub.api.utils.RequestManager
 import com.echoeyecodes.scrub.models.CourseModel
 import com.echoeyecodes.scrub.models.Filter
 import com.echoeyecodes.scrub.models.FilterModel
@@ -34,7 +35,6 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
         user = courseRepository.getUserLiveData()
         courses = courseRepository.getCoursesLiveData().map {
-            AndroidUtilities.log(it.toString())
             val x = it.map {
                 setMap(Filter.SEMESTER, FilterModel(it.semester))
                 setMap(Filter.UNITS, FilterModel(it.units))
@@ -105,18 +105,5 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
     fun getNetworkState():LiveData<ApiState<Any>>{
         return courseRepository.state
-    }
-
-    fun logOut(activity: Activity){
-        runBlocking {
-            courseRepository.deleteData()
-            val sharedPref = activity.getSharedPreferences("auth", MODE_PRIVATE)
-            sharedPref.edit().apply {
-                remove("token")
-                apply()
-                activity.startActivity(Intent(activity, SignUpActivity::class.java))
-                activity.finish()
-            }
-        }
     }
 }

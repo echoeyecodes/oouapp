@@ -7,4 +7,11 @@
         <attr name="inputType" format="integer" />
         <attr name="isSecure" format="boolean" />
     </declare-styleable>
+
+    <declare-styleable name="CustomProgressBar">
+        <attr name="pd_progress" format="integer" />
+        <attr name="pd_text" format="string" />
+        <attr name="pd_description" format="string" />
+        <attr name="pd_custom_background_drawable" format="integer" />
+    </declare-styleable>
 </resources>

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.echoeyecodes.dobby.adapters.CourseAdapter
 import com.echoeyecodes.dobby.utils.CustomItemDecoration
+import com.echoeyecodes.scrub.activities.AnalyticsActivity
 import com.echoeyecodes.scrub.activities.SignUpActivity
 import com.echoeyecodes.scrub.adapters.EmptyAdapter
 import com.echoeyecodes.scrub.adapters.ProfileAdapter
@@ -22,9 +23,12 @@ import com.echoeyecodes.scrub.api.constants.ApiState
 import com.echoeyecodes.scrub.callbacks.MainActivityCallBack
 import com.echoeyecodes.scrub.fragments.AlertDialogFragment
 import com.echoeyecodes.scrub.fragments.FilterFragment
+import com.echoeyecodes.scrub.models.EmptyModel
 import com.echoeyecodes.scrub.models.Filter
 import com.echoeyecodes.scrub.models.FilterModel
 import com.echoeyecodes.scrub.utils.AndroidUtilities
+import com.echoeyecodes.scrub.utils.AuthManager
+import com.echoeyecodes.scrub.utils.MyApplication
 import com.echoeyecodes.scrub.viewmodels.MainActivityViewModel
 
 class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayout.OnRefreshListener {
@@ -34,6 +38,7 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
     private lateinit var gpaTextView:TextView
     private lateinit var timestamp:TextView
     private lateinit var logOutBtn:ImageButton
+    private lateinit var chartBtn:ImageButton
     private lateinit var filterFragment:FilterFragment
     private lateinit var alertDialogFragment:AlertDialogFragment
     private lateinit var swipeRefreshLayout:SwipeRefreshLayout
@@ -48,6 +53,7 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout)
         recyclerView = findViewById(R.id.recycler_view)
         logOutBtn = findViewById(R.id.exit_btn)
+        chartBtn = findViewById(R.id.chart_btn)
         filterBtn = findViewById(R.id.filter_btn)
         gpaTextView = findViewById(R.id.gpa)
         timestamp = findViewById(R.id.timestamp)
@@ -72,6 +78,7 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
         }
 
         logOutBtn.setOnClickListener { showRemoveAccountAlertDialog() }
+        chartBtn.setOnClickListener { startActivity(Intent(this, AnalyticsActivity::class.java)) }
 
         swipeRefreshLayout.setOnRefreshListener(this)
 
@@ -81,8 +88,7 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
                 profileAdapter.submitList(listOf(it))
                 timestamp.text = "Last Updated: ${it.getTimeDifference()}"
             }else{
-                emptyAdapter.submitList(listOf("LMAO"))
-            }
+                emptyAdapter.submitList(listOf(EmptyModel(ResourcesCompat.getDrawable(resources, R.drawable.ic_empty, null)!!, "No data to show! \\n Wanna see a trick? Swipe down to refresh :-)")))            }
         })
 
         viewModel.mediatorLiveData.observe(this, {
@@ -101,10 +107,6 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
                 is ApiState.Error ->{
                    AndroidUtilities.showSnackBar(swipeRefreshLayout, it.data)
                 }
-                is ApiState.Unauthorized ->{
-                    AndroidUtilities.showToastMessage(this, "You need to be logged in to continue!")
-                    logOut()
-                }
             }
         })
 
@@ -118,6 +120,11 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
         return supportFragmentManager.findFragmentByTag(tag)
     }
 
+//    override fun onStart() {
+//        super.onStart()
+//        startActivity(Intent(this, AnalyticsActivity::class.java))
+//    }
+
     override fun setFilters(filter: HashMap<Filter, List<FilterModel>>) {
         viewModel.onFilterSelected(filter)
     }
@@ -127,11 +134,12 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
     }
 
     private fun logOut(){
-        viewModel.logOut(this)
+        AuthManager().logOut()
     }
 
     override fun onResume() {
         super.onResume()
+        MyApplication.myContext = this
         window.navigationBarColor = ResourcesCompat.getColor(resources, R.color.colorPrimary, null)
     }
 

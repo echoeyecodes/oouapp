@@ -101,4 +101,5 @@ dependencies {
     implementation 'androidx.media:media:1.2.1'
 
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

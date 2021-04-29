@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:contentPadding="10dp"
+    style="@style/CustomCardViewStyle"
+    app:cardCornerRadius="10dp"
+    app:cardElevation="0dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Grande Finale"
+            style="@style/SemiBold"
+            />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.echoeyecodes.scrub.customviews.CircularProgressBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:pd_progress="50"
+            app:pd_text="50"
+            android:layout_weight="1"
+            app:pd_description="students in civil engineering"
+            />
+
+        <com.echoeyecodes.scrub.customviews.CircularProgressBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:pd_progress="50"
+            app:pd_text="50"
+            android:layout_weight="1"
+            app:pd_description="students in civil engineering"
+            />
+
+    </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This information represents your percentile score on your CGPA cross referenced between every student in your department and graduating set."
+            style="@style/Light"
+            />
+</LinearLayout>
+</androidx.cardview.widget.CardView>
