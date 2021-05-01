@@ -7,9 +7,11 @@ import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.echoeyecodes.dobby.utils.CustomItemDecoration
 import com.echoeyecodes.dobby.utils.DefaultItemCallBack
 import com.echoeyecodes.dobby.utils.PieChartItemCallBack
 import com.echoeyecodes.scrub.R
+import com.echoeyecodes.scrub.models.LegendModel
 import com.echoeyecodes.scrub.models.PieChartModel
 import com.echoeyecodes.scrub.utils.AndroidUtilities
 import com.echoeyecodes.scrub.utils.PercentValueFormatter
@@ -19,6 +21,7 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.MPPointF
+import com.google.android.flexbox.*
 
 class PieChartAdapter : ListAdapter<PieChartModel, PieChartAdapter.PieChartViewHolder>(PieChartItemCallBack()) {
 
@@ -34,9 +37,18 @@ class PieChartAdapter : ListAdapter<PieChartModel, PieChartAdapter.PieChartViewH
     inner class PieChartViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val pieChart = view.findViewById<PieChart>(R.id.pie_chart)
         private val textView = view.findViewById<TextView>(R.id.title)
+        private val recyclerView = view.findViewById<RecyclerView>(R.id.recycler_view)
         private val descriptionTextView = view.findViewById<TextView>(R.id.description)
+        private var legendAdapter: LegendAdapter? = null
 
         init {
+            val layoutManager = FlexboxLayoutManager(view.context, FlexDirection.ROW, FlexWrap.WRAP)
+            layoutManager.alignItems = AlignItems.FLEX_START
+            val itemDecoration = CustomItemDecoration(5)
+
+            recyclerView.addItemDecoration(itemDecoration)
+            recyclerView.layoutManager = layoutManager
+
             pieChart.apply {
                 setUsePercentValues(false)
                 description.isEnabled = false
@@ -57,16 +69,7 @@ class PieChartAdapter : ListAdapter<PieChartModel, PieChartAdapter.PieChartViewH
             }
 
             //legend
-            val legend = pieChart.legend
-            legend.verticalAlignment = Legend.LegendVerticalAlignment.BOTTOM;
-            legend.horizontalAlignment = Legend.LegendHorizontalAlignment.RIGHT;
-            legend.orientation = Legend.LegendOrientation.HORIZONTAL;
-            legend.textColor = textView.currentTextColor
-            legend.setDrawInside(false)
-            legend.xEntrySpace = 7f
-            legend.yEntrySpace = 0f
-            legend.yOffset = 0f
-
+            pieChart.legend.isEnabled = false
 
             //chart slice label
             pieChart.setEntryLabelColor(ResourcesCompat.getColor(view.context.resources, R.color.white, null));
@@ -76,7 +79,7 @@ class PieChartAdapter : ListAdapter<PieChartModel, PieChartAdapter.PieChartViewH
          fun setData(data: PieChartModel){
              textView.text = data.title
              descriptionTextView.text = data.description
-             val entry = ArrayList(data.slices.map { PieEntry(it.value.toFloat(), it.label)})
+             val entry = ArrayList(data.slices.map { PieEntry(it.value, it.label)})
 
             val dataSet = PieDataSet(entry, "").apply {
                 setDrawIcons(false)
@@ -93,6 +96,23 @@ class PieChartAdapter : ListAdapter<PieChartModel, PieChartAdapter.PieChartViewH
                 add(ResourcesCompat.getColor(view.context.resources, R.color.grade_e, null))
                 add(ResourcesCompat.getColor(view.context.resources, R.color.grade_f, null))
             }
+
+             legendAdapter = LegendAdapter(data.total)
+             recyclerView.adapter = legendAdapter
+
+             val legends = data.slices.map {
+                 val color = when(it.label.toUpperCase()){
+                     "A" -> ResourcesCompat.getColor(view.context.resources, R.color.grade_a, null)
+                     "B" -> ResourcesCompat.getColor(view.context.resources, R.color.grade_b, null)
+                     "C" -> ResourcesCompat.getColor(view.context.resources, R.color.grade_c, null)
+                     "D" -> ResourcesCompat.getColor(view.context.resources, R.color.grade_d, null)
+                     "E" -> ResourcesCompat.getColor(view.context.resources, R.color.grade_e, null)
+                     else -> ResourcesCompat.getColor(view.context.resources, R.color.grade_f, null)
+                 }
+                 LegendModel(color, it.label, it.value)
+             }
+
+             legendAdapter?.submitList(legends)
 
             dataSet.colors = colors
 

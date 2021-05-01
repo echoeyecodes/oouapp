@@ -95,3 +95,14 @@ class PieChartItemCallBack:DiffUtil.ItemCallback<PieChartModel>(){
     }
 
 }
+
+class LegendItemCallBack:DiffUtil.ItemCallback<LegendModel>(){
+    override fun areItemsTheSame(oldItem: LegendModel, newItem: LegendModel): Boolean {
+        return oldItem.text == newItem.text
+    }
+
+    override fun areContentsTheSame(oldItem: LegendModel, newItem: LegendModel): Boolean {
+        return oldItem == newItem
+    }
+
+}

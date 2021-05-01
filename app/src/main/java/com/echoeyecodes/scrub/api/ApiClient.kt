@@ -11,7 +11,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class ApiClient {
     private lateinit var retrofitBuilder: Retrofit.Builder
-    private val BASE_URL = "http://192.168.43.113:3000/"
+    private val BASE_URL = "https://oou-server.herokuapp.com/"
     private lateinit var retrofit: Retrofit
     private lateinit var context: Context
 

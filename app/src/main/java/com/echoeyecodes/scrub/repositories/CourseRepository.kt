@@ -1,4 +1,4 @@
-package com.echoeyecodes.scrub.repositories
+ package com.echoeyecodes.scrub.repositories
 
 import android.app.Activity
 import android.content.Context

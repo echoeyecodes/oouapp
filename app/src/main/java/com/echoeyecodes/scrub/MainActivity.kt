@@ -30,6 +30,7 @@ import com.echoeyecodes.scrub.utils.AndroidUtilities
 import com.echoeyecodes.scrub.utils.AuthManager
 import com.echoeyecodes.scrub.utils.MyApplication
 import com.echoeyecodes.scrub.viewmodels.MainActivityViewModel
+import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayout.OnRefreshListener {
     private lateinit var recyclerView:RecyclerView
