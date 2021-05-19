@@ -13,10 +13,9 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.echoeyecodes.dobby.adapters.CourseAdapter
+import com.echoeyecodes.scrub.adapters.CourseAdapter
 import com.echoeyecodes.dobby.utils.CustomItemDecoration
 import com.echoeyecodes.scrub.activities.AnalyticsActivity
-import com.echoeyecodes.scrub.activities.SignUpActivity
 import com.echoeyecodes.scrub.adapters.EmptyAdapter
 import com.echoeyecodes.scrub.adapters.ProfileAdapter
 import com.echoeyecodes.scrub.api.constants.ApiState
@@ -30,7 +29,6 @@ import com.echoeyecodes.scrub.utils.AndroidUtilities
 import com.echoeyecodes.scrub.utils.AuthManager
 import com.echoeyecodes.scrub.utils.MyApplication
 import com.echoeyecodes.scrub.viewmodels.MainActivityViewModel
-import com.google.firebase.messaging.FirebaseMessaging
 
 class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayout.OnRefreshListener {
     private lateinit var recyclerView:RecyclerView
@@ -74,8 +72,10 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
         recyclerView.adapter = adapter
 
         filterBtn.setOnClickListener {
-            val fragment = FilterFragment.newInstance()
-            fragment.show(supportFragmentManager, "FILTER_FRAGMENT")
+            val fragment = (getFragmentByTag("FILTER_FRAGMENT") as FilterFragment?) ?: FilterFragment.newInstance()
+            if(!fragment.isAdded){
+                fragment.show(supportFragmentManager, "FILTER_FRAGMENT")
+            }
         }
 
         logOutBtn.setOnClickListener { showRemoveAccountAlertDialog() }
@@ -131,7 +131,9 @@ class MainActivity : AppCompatActivity(), MainActivityCallBack, SwipeRefreshLayo
     }
 
     override fun showRemoveAccountAlertDialog() {
-        alertDialogFragment.show(supportFragmentManager, AlertDialogFragment.TAG)
+        if(!alertDialogFragment.isAdded){
+            alertDialogFragment.show(supportFragmentManager, AlertDialogFragment.TAG)
+        }
     }
 
     private fun logOut(){

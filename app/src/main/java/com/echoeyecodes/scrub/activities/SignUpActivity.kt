@@ -29,7 +29,7 @@ class SignUpActivity : AppCompatActivity(), CustomEditTextCallBack{
         loginBtn = findViewById(R.id.btn)
         matricNumber = findViewById(R.id.matric_number)
         password = findViewById(R.id.password)
-        loadingFragment = LoadingDialogFragment.newInstance()
+        loadingFragment = supportFragmentManager.findFragmentByTag(LoadingDialogFragment.TAG) as LoadingDialogFragment? ?: LoadingDialogFragment.newInstance()
 
         viewModel = ViewModelProvider(this).get(SignUpViewModel::class.java)
 
@@ -44,7 +44,11 @@ class SignUpActivity : AppCompatActivity(), CustomEditTextCallBack{
 
         viewModel.getStatus().observe(this, {
             when(it){
-                is ApiState.Loading ->  loadingFragment.show(supportFragmentManager, LoadingDialogFragment.TAG)
+                is ApiState.Loading ->  {
+                    if(!loadingFragment.isAdded){
+                        loadingFragment.show(supportFragmentManager, com.echoeyecodes.scrub.fragments.LoadingDialogFragment.TAG)
+                    }
+                }
                 is ApiState.Complete -> {
                     dismissLoadingContainer()
                     startActivity(Intent(this, MainActivity::class.java))

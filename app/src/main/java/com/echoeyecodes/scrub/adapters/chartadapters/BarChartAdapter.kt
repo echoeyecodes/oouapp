@@ -1,6 +1,5 @@
 package com.echoeyecodes.scrub.adapters.chartadapters
 
-import android.graphics.DashPathEffect
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,14 +8,11 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.echoeyecodes.dobby.utils.BarChartItemCallBack
-import com.echoeyecodes.dobby.utils.DefaultItemCallBack
 import com.echoeyecodes.scrub.R
 import com.echoeyecodes.scrub.models.BarChartModel
 import com.echoeyecodes.scrub.utils.DayAxisValueFormatter
 import com.echoeyecodes.scrub.utils.MyAxisValueFormatter
 import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.components.Legend
-import com.github.mikephil.charting.components.LegendEntry
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.BarData

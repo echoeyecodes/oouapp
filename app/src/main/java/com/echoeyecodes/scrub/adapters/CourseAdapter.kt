@@ -1,4 +1,4 @@
-package com.echoeyecodes.dobby.adapters
+package com.echoeyecodes.scrub.adapters
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
